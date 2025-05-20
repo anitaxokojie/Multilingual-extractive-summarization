@@ -19,12 +19,30 @@ This project implements an extractive summarization system specifically optimize
 - **Domain-Specific Tuning**: Enhanced for TED Talk structure and content
 - **Explainable Results**: Provides transparency into sentence selection decisions
 
-## Key Results
+## Key Results & Evaluation
 
+### Performance Metrics
 - **ROUGE-1 F1**: 0.3078
 - **BLEU-1**: 0.2281
 - **Cross-Lingual Analysis**: Spanish models show +1.6-1.7% better ROUGE scores
 - **Optimal Summary Length**: 5 sentences balances quality and conciseness
+
+### Model Comparison
+My evaluation included comprehensive metrics across different model configurations:
+
+![Model Comparison](images/output_25_1.png)
+
+### Cross-Lingual Performance
+Cross-lingual analysis revealed that Spanish models consistently showed slightly better ROUGE scores (+1.6-1.7%) compared to English models:
+
+![Cross-Lingual Performance](images/output_18_1.png)
+
+### Fairness Assessment
+I conducted a fairness assessment across different topic categories, which revealed some bias toward technical content:
+
+![Fairness Assessment](images/output_19_1.png)
+
+This analysis demonstrates the importance of considering topic distribution when developing summarization systems, as performance can vary significantly based on content domain.
 
 ## Repository Structure
 
