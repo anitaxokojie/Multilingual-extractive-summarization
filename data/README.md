@@ -7,7 +7,7 @@ This project uses the TED Talks dataset available on Kaggle:
 
 ### Dataset Description
 
-The dataset contains transcripts of TED Talks in multiple languages, including English and Spanish. For this project, we worked with a subset of 1,000 TED Talk transcripts that were available in both languages.
+The dataset contains transcripts of TED Talks in multiple languages, including English and Spanish. For this project, I worked with a subset of 1,000 TED Talk transcripts that were available in both languages.
 
 ### Data Structure
 
@@ -49,8 +49,10 @@ Language-specific preprocessing was applied for English and Spanish using the re
 
 ### Sample Data
 
-Due to the size of the dataset, we do not include the raw data in this repository. To reproduce our results, please download the dataset from the Kaggle link above.
+Due to the size of the dataset, I do not include the raw data in this repository. To reproduce my results, please download the dataset from the Kaggle link above.
 
 ### Citation
 
-If you use this dataset in your research, please cite:
+If you use this dataset in your research, please cite: Miguel Corral Jr. (2020). "TED Ultimate Dataset." Kaggle. 
+Available at: https://www.kaggle.com/datasets/miguelcorraljr/ted-ultimate-dataset
+
