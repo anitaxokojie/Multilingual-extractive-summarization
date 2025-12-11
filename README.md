@@ -154,6 +154,6 @@ MIT - See [LICENSE](LICENSE)
 
 ## Contact
 
-Built by [Anita Okojie-Aidonojie] | 
+Built by Anita Okojie-Aidonojie | 
 
 *This project was developed to solve a real problem: making TED's 3,900+ talk library navigable without spending hours watching 18-minute videos.*
