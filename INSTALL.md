@@ -35,17 +35,15 @@ pip install -r requirements.txt
 
 **Note:** This will download ~600MB of packages including PyTorch and transformers.
 
+
 ### 4. Download spaCy Language Models
-
 ```bash
-# English model (550MB)
+# Download separately (works on all systems)
 python -m spacy download en_core_web_lg
-
-# Spanish model (550MB)
 python -m spacy download es_core_news_lg
 ```
 
-**Total download:** ~1.7GB (PyTorch + transformers + spaCy models)
+**Note:** The models download ~968MB total. This is normal.
 
 ### 5. Verify Installation
 
