@@ -53,7 +53,7 @@ similarity = cosine_similarity(embed("climate change"), embed("rising CO2"))
 
 ```bash
 # Clone and install
-git clone https://github.com/yourusername/multilingual-extractive-summarization.git
+git clone https://github.com/anitaxokojie/multilingual-extractive-summarization.git
 cd multilingual-extractive-summarization
 pip install -r requirements.txt
 python -m spacy download en_core_web_lg es_core_news_lg
