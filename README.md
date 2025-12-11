@@ -172,7 +172,7 @@ This bias stems from the domain keyword list being too general. Current version 
 **Current Limitations:**
 - **Speed:** 11s per document on CPU. Suitable for batch processing, not real-time applications.
 - **Extractive-only:** No sentence generation, which can result in less fluent summaries.
-- **Topic bias:** Underperforms on abstract topics (neuroscience, philosophy) vs concrete content (technology, climate).
+- **Topic bias:** Underperforms on abstract topics (neuroscience, philosophy, 27%) vs concrete content (technology, climate, 40% keyword retention).
 - **Spanish performance:** 20% lower ROUGE scores than English, needs language-specific optimization.
 
 **Roadmap:**
