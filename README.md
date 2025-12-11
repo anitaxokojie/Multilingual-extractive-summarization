@@ -28,7 +28,7 @@ similarity = cosine_similarity(embed("climate change"), embed("rising CO2"))
 
 ### Real-World Impact
 - **200 talks evaluated**: Outperformed TextRank baseline by 12% on semantic preservation
-- **Cross-lingual consistency**: Spanish summaries maintain some quality parity with English
+- **Cross-lingual capability**: Works on 50+ languages via multilingual embeddings (Spanish performance ~20% lower than English, opportunities for language-specific optimization)
 - **Domain-tuned weighting**: Prioritizes intro/conclusion where TED speakers state their thesis
 
 ## Quick Start
@@ -90,7 +90,7 @@ Top-K Sentence Extraction
 |--------|---------------------|-------------|-------------|
 | ROUGE-1 F1 | 0.275 | 0.308 | +12.0% |
 | Semantic Preservation | 0.144 | 0.186 | +29.2% |
-| Cross-lingual Parity | N/A | - | - |
+| Cross-lingual Parity | N/A | -20% | - |
 | Inference (CPU, per talk) | 0.82s | 11s | Trade-off for quality |
 
 *Tested on 200 TED talks (avg 2,400 words). Slower than keyword methods but significantly more accurate. Suitable for batch processing, research pipelines, and offline analysis—not real-time applications.*
