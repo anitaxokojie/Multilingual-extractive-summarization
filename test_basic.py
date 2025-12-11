@@ -104,6 +104,64 @@ def test_edge_cases():
     print()
 
 
+def test_quality_regression():
+    """Test that quality doesn't degrade below acceptable threshold"""
+    print("Testing quality regression...")
+    
+    summarizer = DomainTunedSummarizer()
+    
+    # This is a known-good example from development
+    # In a real project, you'd load this from a fixtures file
+    gold_text = """
+    Climate change represents one of the most significant challenges facing humanity today.
+    Rising global temperatures are causing widespread environmental disruption.
+    Scientists have conclusively demonstrated that human activities, particularly fossil fuel combustion, are the primary drivers.
+    The consequences include more frequent extreme weather events, rising sea levels, and ecosystem collapse.
+    Immediate action is required to reduce greenhouse gas emissions and transition to renewable energy sources.
+    Political and economic barriers remain substantial obstacles to meaningful climate action.
+    However, technological solutions like solar and wind power are becoming increasingly cost-effective.
+    International cooperation through agreements like the Paris Accord provides a framework for collective response.
+    """
+    
+    summary = summarizer.summarize(gold_text, language='en', num_sentences=3, title="Climate Change Crisis")
+    
+    # Check that key concepts are preserved
+    key_terms = ['climate', 'emissions', 'renewable', 'action']
+    terms_found = sum(1 for term in key_terms if term in summary.lower())
+    
+    assert terms_found >= 2, f"Summary should contain at least 2 key terms, found {terms_found}"
+    assert len(summary.split()) > 30, "Summary should be substantive (>30 words)"
+    assert len(summary.split()) < 200, "Summary should be concise (<200 words)"
+    
+    print(f"✅ Quality regression check passed")
+    print(f"   Key terms preserved: {terms_found}/{len(key_terms)}")
+    print(f"   Summary length: {len(summary.split())} words\n")
+
+
+def test_deterministic_output():
+    """Test that the same input produces the same output"""
+    print("Testing deterministic output...")
+    
+    summarizer = BERTSummarizer()
+    
+    text = """
+    Artificial intelligence is transforming every industry.
+    Machine learning algorithms can now perform tasks that once required human intelligence.
+    From medical diagnosis to autonomous vehicles, AI applications are proliferating.
+    However, concerns about bias, privacy, and job displacement remain.
+    Responsible AI development requires careful consideration of ethical implications.
+    """
+    
+    # Generate summary twice
+    summary1 = summarizer.summarize(text, language='en', num_sentences=2)
+    summary2 = summarizer.summarize(text, language='en', num_sentences=2)
+    
+    assert summary1 == summary2, "Same input should produce identical output"
+    
+    print(f"✅ Deterministic output verified")
+    print(f"   Both runs produced: {summary1[:80]}...\n")
+
+
 if __name__ == "__main__":
     print("\n" + "="*60)
     print("RUNNING SMOKE TESTS")
@@ -114,6 +172,8 @@ if __name__ == "__main__":
         test_domain_tuned()
         test_spanish()
         test_edge_cases()
+        test_quality_regression()
+        test_deterministic_output()
         
         print("="*60)
         print("✅ ALL TESTS PASSED")
