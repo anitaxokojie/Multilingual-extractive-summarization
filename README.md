@@ -82,6 +82,70 @@ summary = summarizer.summarize(
 
 print(summary)
 ````
+
+
+# TED Talk Semantic Summarizer
+
+> A production-ready multilingual extractive summarization system that uses transformer embeddings and graph algorithms to generate concise summaries of TED talks in 50+ languages.
+
+[Technical Deep Dive](notebooks/Semantic_Summarization_Pipeline.ipynb) | [🔗 GitHub](https://github.com/anitaxokojie/multilingual-extractive-summarization)
+
+## Why This Project Exists
+
+I built this after getting frustrated with generic summarization tools that either:
+- Cost money (OpenAI API)
+- Produce keyword-stuffed nonsense (TextRank)
+- Break completely on non-English content
+
+**The solution:** Semantic embeddings + PageRank + domain-aware boosting = summaries that actually capture the speaker's thesis.
+
+## What It Does
+
+**Input:** 2,400-word TED talk transcript (any of 50+ languages)  
+**Output:** 3-5 sentence summary capturing the core thesis  
+**Time:** ~11 seconds on CPU (suitable for batch processing)
+
+**Real-world numbers from testing:**
+- Processed 200 TED talks (100 English, 100 Spanish) with 13% better semantic preservation than keyword-based methods
+- Runs entirely offline—no API costs, no usage limits
+- Identified and quantified bias across topics (neuroscience summaries had 3.9% keyword retention vs 84.7% for general topics, revealing areas needing improvement)
+
+This was built to solve a personal problem: I wanted to explore TED's 3,900+ talk library without watching 18-minute videos for each one.
+
+## Quick Start
+
+```bash
+# Clone and install
+git clone https://github.com/anitaxokojie/multilingual-extractive-summarization.git
+cd multilingual-extractive-summarization
+pip install -r requirements.txt
+python -m spacy download en_core_web_lg es_core_news_lg
+
+# Run inference
+python demo.py
+```
+
+## Usage
+
+```python
+from src.models import DomainTunedSummarizer
+
+summarizer = DomainTunedSummarizer()
+
+text = """
+Your TED talk transcript here...
+"""
+
+summary = summarizer.summarize(
+    text, 
+    language='en', 
+    num_sentences=3,
+    title="Climate Crisis and Innovation"  # Optional: boosts title-relevant sentences
+)
+
+print(summary)
+```
+
 ## Technical Architecture
 ```mermaid
 graph TD
