@@ -13,6 +13,18 @@ I built this after getting frustrated with generic summarization tools that eith
 
 **The solution:** Semantic embeddings + PageRank + domain-aware boosting = summaries that actually capture the speaker's thesis.
 
+What It Does
+Input: 2,400-word TED talk transcript (any of 50+ languages)
+Output: 3-5 sentence summary capturing the core thesis
+Time: ~11 seconds on CPU (suitable for batch processing)
+Real-world numbers from testing:
+
+Processed 200 TED talks (100 English, 100 Spanish) with 13% better semantic preservation than keyword-based methods
+Runs entirely offline—no API costs, no usage limits
+Identified and quantified bias across topics (neuroscience summaries had 3.9% keyword retention vs 84.7% for general topics, revealing areas needing improvement)
+
+This was built to solve a personal problem: I wanted to explore TED's 3,900+ talk library without watching 18-minute videos for each one.
+
 ## Quick Test (2 minutes)
 ```bash
 git clone https://github.com/anitaxokojie/multilingual-extractive-summarization.git
