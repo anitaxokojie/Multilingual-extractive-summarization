@@ -49,25 +49,55 @@
 
 ### Inference Latency (Single Document)
 
-| Model | Cold Start | Warm Inference | Notes |
-|-------|------------|----------------|-------|
-| PyTextRank | 0.05s | 0.82s | Keyword-based, fast but less accurate |
-| This System | 2.3s | **~11s** | Includes full semantic analysis |
+| Model | Warm Inference | Notes |
+|-------|----------------|-------|
+| PyTextRank | 0.82s | Keyword-based, fast but less accurate |
+| This System | **~11s** | Includes full semantic analysis |
+
+**Context for the 11s latency:**
+- **Acceptable for:** Batch processing, research pipelines, overnight content curation jobs, offline analysis
+- **Not suitable for:** Real-time chat interfaces, on-demand user requests, live content moderation
+- **Comparison point:** OpenAI API typically responds in 2-3s but requires internet and costs $0.03/request. This runs offline and free.
 
 **Note:** 
-- Cold start includes model loading (one-time cost per session)
 - 11s latency reflects complete semantic analysis: sentence segmentation (60%), embedding generation (26%), PageRank computation (11%), post-processing (3%)
-- Suitable for batch processing, research pipelines, and offline analysis—not real-time applications
+- Initial model loading (one-time cost per session) adds ~2-3 seconds
 
 ### Batch Processing (20 Documents - Actual Test)
 
-| Batch Size | Avg Time/Doc | Total Time (20 docs) | Throughput |
-|------------|--------------|----------------------|------------|
-| 1 (sequential) | 11.0s | 220s (~3.7 min) | 0.09 docs/sec |
-| 8 (estimated) | ~5.5s | ~110s (~1.8 min) | 0.18 docs/sec |
-| 32 (estimated) | ~3.2s | ~64s (~1 min) | 0.31 docs/sec |
+| Processing Mode | Avg Time/Doc | Total Time (20 docs) | Throughput |
+|----------------|--------------|----------------------|------------|
+| Sequential (tested) | 11.0s | 220s (~3.7 min) | 0.09 docs/sec |
 
-**Recommendation:** For production, use batched embedding generation (`model.encode(sentences, batch_size=32)`) and parallel sentence segmentation to achieve ~3-5s/doc on CPU. GPU acceleration provides 3-5x additional speedup.
+**Note:** The current implementation processes documents one at a time. Potential optimizations include:
+- Batching embedding generation (not yet implemented)
+- Parallel sentence segmentation using spaCy's `n_process` parameter
+- GPU acceleration (automatic with PyTorch if CUDA available)
+
+These optimizations could reduce latency to ~3-5s per document, but haven't been benchmarked yet.
+
+---
+
+## Comparison to Traditional Baselines
+
+### Tested on This Dataset (200 TED Talks)
+
+| System | Architecture | Speed (2.4k words) | Quality (ROUGE-1) | Deployment |
+|--------|-------------|-------------------|------------------|------------|
+| **PyTextRank (baseline)** | Word overlap + graph | 0.82s | 0.275 | CPU-only |
+| **Basic BERT** | Embeddings + PageRank | ~11s | 0.302 | CPU-only |
+| **This System (optimized)** | BERT + Domain tuning | **~11s** | **0.311** | CPU-only |
+
+**Key Finding:** 13% improvement in semantic preservation (0.186 vs 0.144) compared to PyTextRank, though 13x slower. The trade-off favors quality for applications where accuracy is critical.
+
+### Context: Modern Abstractive Models
+
+Systems like PEGASUS and BART (not tested here) typically achieve higher ROUGE scores by generating new text, but:
+- Require GPU for practical speeds
+- Can hallucinate facts (generate plausible but incorrect information)
+- Models are 400-600MB vs this system's 420MB
+
+This extractive approach guarantees factual accuracy—every sentence in the summary exists verbatim in the source text.
 
 ---
 
@@ -144,20 +174,22 @@ We tested removing each domain-specific enhancement to measure impact:
 
 ## Comparison to Commercial APIs
 
-| Service | Cost | Quality | Latency (2.4k words) | Multilingual | Notes |
-|---------|------|---------|---------------------|--------------|-------|
-| OpenAI GPT-4 Turbo | $0.01/1k tokens (~$0.03/talk) | High (abstractive) | ~2-3s | 50+ langs | Generates new text |
-| Cohere Summarize | $1.00/1M tokens (~$0.002/talk) | Medium | ~1-2s | Limited | Optimized for speed |
-| Anthropic Claude | $0.015/1k tokens (~$0.04/talk) | High (abstractive) | ~2-4s | 10+ langs | Best quality |
-| **This System** | **Free** | High (extractive) | **~11s** | **50+ langs** | Open source, no API calls |
+| Service | Cost (per 2.4k word talk) | Approach | Typical Latency | Multilingual |
+|---------|---------------------------|----------|-----------------|--------------|
+| OpenAI GPT-4 Turbo | ~$0.03 | Abstractive | 2-4s* | 50+ langs |
+| Cohere Summarize | ~$0.002 | Abstractive | 1-2s* | Limited |
+| Anthropic Claude | ~$0.04 | Abstractive | 2-4s* | 10+ langs |
+| **This System** | **$0** | **Extractive** | **~11s** | **50+ langs** |
+
+*Latency depends on network conditions, API load, and document complexity. Times based on typical reported performance.
 
 **Trade-off Analysis:**
-- **Speed:** Commercial APIs are 3-5x faster due to optimized infrastructure
-- **Cost:** This system is free for unlimited use; commercial APIs cost $0.002-$0.04 per talk
-- **Quality:** Abstractive models (GPT-4, Claude) produce more fluent summaries; this system guarantees factual accuracy (no hallucinations)
-- **Privacy:** This system runs locally; commercial APIs send data to third parties
+- **Speed:** Commercial APIs are typically 3-5x faster, though this varies with network conditions and API availability
+- **Cost:** This system is free for unlimited use; commercial APIs cost $0.002-$0.04 per document
+- **Quality:** Abstractive models can generate more fluent summaries but may hallucinate details. This system extracts verbatim sentences, preserving factual accuracy but potentially sacrificing readability
+- **Privacy:** This system runs entirely offline; commercial APIs require sending data to third-party servers
 
-**Best For:** Batch processing, research, cost-sensitive applications, privacy-critical use cases, or when factual accuracy is paramount.
+**Best For:** Batch processing, research, cost-sensitive applications, privacy-critical use cases, or when verbatim extraction is required.
 
 ---
 
@@ -219,7 +251,7 @@ jupyter notebook notebooks/Semantic_Summarization_Pipeline.ipynb
 
 ### Long-Term (Requires architecture changes):
 1. **Distilled models:** Use smaller embedding models (MiniLM-L6 instead of mpnet-base-v2) for 5x speedup with 10% quality trade-off
-2. **GPU deployment:** Leverage GPU for batch jobs (10x throughput improvement)
+2. **GPU deployment:** Leverage GPU for batch jobs (estimated 3-5x throughput improvement)
 3. **Hybrid abstractive:** Add T5-small for sentence fusion to improve fluency
 
 **Target:** <1s per document on GPU with maintained quality
@@ -254,7 +286,7 @@ Based on profiling 20 documents (avg 2,400 words):
 - **CPU:** Quad-core 3.0GHz or better
 - **RAM:** 8GB or more
 - **Disk:** 5GB free space
-- **GPU:** Optional; NVIDIA GPU with CUDA for 3-5x speedup
+- **GPU:** Optional; NVIDIA GPU with CUDA for potential speedup
 
 ### Cloud/Server Deployment
 - **AWS EC2:** t3.medium or larger (2 vCPU, 4GB RAM)
@@ -270,4 +302,4 @@ Based on profiling 20 documents (avg 2,400 words):
 **Model:** paraphrase-multilingual-mpnet-base-v2  
 **Hardware:** Intel i7-9750H, 16GB RAM, CPU-only  
 
-Results may vary on different hardware. GPU acceleration typically provides 3-5x speedup. For updated benchmarks or hardware-specific results, see the GitHub repository.
+Results may vary on different hardware. For updated benchmarks or hardware-specific results, see the GitHub repository.
