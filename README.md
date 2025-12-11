@@ -149,9 +149,10 @@ Clustering (k-means) assumes topics are distinct. TED talks weave themes—PageR
 
 ### The Bias Problem
 Initial testing revealed topic bias:
-- **General topics**: 84.7% keyword retention, strong performance
-- **Neuroscience topics**: 3.9% keyword retention (severely underperformed)
-- **Arts/Climate topics**: Moderate performance (~21-30% retention)
+ - **General topics**: 41.4% keyword retention, 84.7% ROUGE-1
+ - **Arts topics**: 4.6% keyword retention, 29.9% ROUGE-1  
+ - **Climate topics**: 2.8% keyword retention, 21.2% ROUGE-1
+ - **Neuroscience topics**: 3.9% keyword retention, 21.9% ROUGE-1
 
 This bias stems from the domain keyword list being too general. Current version partially addresses this through topic-normalized weighting, but domain-specific fine-tuning would further improve fairness.
 
