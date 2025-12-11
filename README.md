@@ -49,18 +49,6 @@ similarity = cosine_similarity(embed("climate change"), embed("rising CO2"))
 - **Cross-lingual capability**: Works on 50+ languages via multilingual embeddings (Spanish performance ~20% lower than English, opportunities for language-specific optimization)
 - **Domain-tuned weighting**: Prioritizes intro/conclusion where TED speakers state their thesis
 
-## Quick Start
-
-```bash
-# Clone and install
-git clone https://github.com/anitaxokojie/multilingual-extractive-summarization.git
-cd multilingual-extractive-summarization
-pip install -r requirements.txt
-python -m spacy download en_core_web_lg es_core_news_lg
-
-# Run inference
-python demo.py
-```
 
 ## Usage
 
