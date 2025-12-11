@@ -121,7 +121,12 @@ Tested 5 models. `paraphrase-multilingual-mpnet-base-v2` won on:
 Clustering (k-means) assumes topics are distinct. TED talks weave themes—PageRank handles this by measuring global centrality instead of hard boundaries.
 
 ### The Bias Problem
-Initial version over-represented technical talks (40% keyword preservation vs 27% for social topics). Fixed with topic-normalized weighting.
+Initial testing revealed topic bias:
+- **General topics**: 84.7% keyword retention, strong performance
+- **Neuroscience topics**: 3.9% keyword retention (severely underperformed)
+- **Arts/Climate topics**: Moderate performance (~21-30% retention)
+
+This bias stems from the domain keyword list being too general. Current version partially addresses this through topic-normalized weighting, but domain-specific fine-tuning would further improve fairness.
 
 ## What I Learned
 
@@ -138,15 +143,16 @@ Initial version over-represented technical talks (40% keyword preservation vs 27
 ## Limitations & Next Steps
 
 **Current Limitations:**
-- Extractive-only (no sentence generation)
-- Topic bias toward concrete/technical content
-- No confidence scoring for end users
+- **Speed:** 11s per document on CPU. Suitable for batch processing, not real-time applications.
+- **Extractive-only:** No sentence generation, which can result in less fluent summaries.
+- **Topic bias:** Underperforms on abstract topics (neuroscience, philosophy) vs concrete content (technology, climate).
+- **Spanish performance:** 20% lower ROUGE scores than English, needs language-specific optimization.
 
 **Roadmap:**
-1. Deploy as FastAPI service with `/summarize` endpoint
-2. Add T5-based abstractive layer for coherence
-3. Implement user feedback loop (thumbs up/down → retrain weights)
-4. ONNX conversion for 3-5x CPU speedup
+1. **Speed optimization:** Implement batched embeddings and ONNX conversion (target: 3-5s/doc)
+2. **Abstractive layer:** Add T5-based paraphrasing for smoother summaries
+3. **Language parity:** Fine-tune Spanish embeddings to match English performance
+4. **Deployment:** FastAPI service with confidence scoring and user feedback
 
 ## License
 
