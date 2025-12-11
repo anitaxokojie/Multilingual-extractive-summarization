@@ -13,6 +13,24 @@ I built this after getting frustrated with generic summarization tools that eith
 
 **The solution:** Semantic embeddings + PageRank + domain-aware boosting = summaries that actually capture the speaker's thesis.
 
+## Quick Test (2 minutes)
+```bash
+git clone https://github.com/anitaxokojie/multilingual-extractive-summarization.git
+cd multilingual-extractive-summarization
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install core dependencies
+pip install torch sentence-transformers spacy numpy
+
+# Download language models
+python -m spacy download en_core_web_lg
+python -m spacy download es_core_news_lg
+
+# Verify it works
+python test_basic.py  # Should see: ✅ ALL TESTS PASSED
+python demo.py        # See actual summaries
+```
 ## What Makes It Different
 
 ### The Problem with Keyword-Based Approaches
