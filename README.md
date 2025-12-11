@@ -118,13 +118,14 @@ Top-K Sentence Extraction
 ```
 .
 ├── src/
-│   ├── models.py           # BERTSummarizer, DomainTunedSummarizer
+│   ├── models.py           # BERTSummarizer, DomainTunedSummarizer, Refactored production code (OOP implementation)
 │   └── __init__.py
 ├── notebooks/
 │   └── Semantic_Summarization_Pipeline.ipynb  # Full analysis
 ├── demo.py                 # CLI example
 ├── requirements.txt
 └── README.md
+└── results/                # Evaluation plots
 ```
 
 ## Engineering Decisions
