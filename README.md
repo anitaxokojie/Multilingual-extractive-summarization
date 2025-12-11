@@ -139,7 +139,7 @@ graph TD
 - Better user experience for quick scanning
 - Quality difference is statistically significant but perceptually modest
 - k=5 remains available for users prioritizing comprehensiveness
-- 
+  
 ## Project Structure
 
 ```
