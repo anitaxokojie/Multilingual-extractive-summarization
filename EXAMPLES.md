@@ -191,7 +191,7 @@ curl -X POST "http://localhost:8000/summarize" \
 ## Performance Notes
 
 - **Cold start:** 2-3 seconds (model loading)
-- **Warm inference:** 0.19s per document (CPU)
+- **Warm inference:** 11s per document (CPU)
 - **Memory:** ~1.2GB for model weights
 - **Batch processing:** Use `summarizer.model.encode(sentences, batch_size=32)` for 3x speedup
 
@@ -203,6 +203,6 @@ curl -X POST "http://localhost:8000/summarize" \
  
  **Short texts (<100 words):** Overhead exceeds benefit. Use full text.
 
- **Real-time chat:** 0.19s latency may be too slow. Consider distilled models or caching.
+ **Real-time chat:** 11s latency may be too slow. Consider distilled models or caching.
 
  **Best for:** Research papers, long-form articles, transcripts, product reviews, meeting notes.
