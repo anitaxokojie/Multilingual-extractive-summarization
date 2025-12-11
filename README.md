@@ -197,7 +197,7 @@ graph TD
     H --> I[Intro: 1.2x<br/>Outro: 1.3x<br/>Title: 1.5x]
     I --> J[PageRank<br/>Algorithm]
     J --> K[Centrality Scores]
-    K --> L[Top-5 Selection]
+    K --> L[Top-k Selection (Default: 3)]
     L --> M[Summary<br/>67 words]
     
     style A fill:#e1f5ff
