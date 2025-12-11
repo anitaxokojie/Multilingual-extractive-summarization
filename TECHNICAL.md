@@ -8,7 +8,7 @@
 
 **Reasoning:**
 1. **Accuracy:** No hallucination risk—every sentence is verbatim from source
-2. **Speed:** 0.19s vs 2-5s for GPT-based generation
+2. **Speed:** ~11s (CPU) vs 2-5s (GPT). While slower than simple keyword extraction, it runs locally without API latency or cost.
 3. **Cost:** Free vs $0.03/1k tokens
 4. **Explainability:** Can trace exactly why each sentence was selected
 
