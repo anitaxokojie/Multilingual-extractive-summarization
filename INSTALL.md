@@ -11,7 +11,7 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/multilingual-extractive-summarization.git
+git clone https://github.com/anitaxokojie/multilingual-extractive-summarization.git
 cd multilingual-extractive-summarization
 ```
 
