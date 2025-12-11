@@ -8,7 +8,7 @@ def print_section(title, content):
     print(f"{content}\n")
 
 def main():
-    print("⏳ Initializing models (this may take a moment)...")
+    print(" Initializing models (this may take a moment)...")
     start_time = time.time()
     
     # Initialize the summarizers
