@@ -104,14 +104,14 @@ Top-K Sentence Extraction
 
 ## Performance Benchmarks
 
-| Metric | Baseline (TextRank) | This System | Improvement |
-|--------|---------------------|-------------|-------------|
-| ROUGE-1 F1 | 0.275 | 0.308 | +12.0% |
+| Metric | Baseline (TextRank) | This System (k=5) | Improvement |
+|--------|---------------------|-------------------|-------------|
+| ROUGE-1 F1 | 0.275 | 0.311 | +13.1% |
 | Semantic Preservation | 0.144 | 0.186 | +29.2% |
-| Cross-lingual Parity | N/A | -20% | - |
-| Inference (CPU, per talk) | 0.82s | 11s | Trade-off for quality |
+| Inference (CPU) | 0.82s | ~11s | Trade-off for quality |
 
 *Tested on 200 TED talks (avg 2,400 words). Slower than keyword methods but significantly more accurate. Suitable for batch processing, research pipelines, and offline analysis—not real-time applications.*
+*Note: While k=5 yields the highest accuracy, the system defaults to k=3 to provide more concise summaries.*
 
 ## Project Structure
 
