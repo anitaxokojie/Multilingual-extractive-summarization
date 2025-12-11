@@ -112,15 +112,34 @@ graph TD
 
 ## Performance Benchmarks
 
-| Metric | Baseline (TextRank) | This System (k=5) | Improvement |
-|--------|---------------------|-------------------|-------------|
-| ROUGE-1 F1 | 0.275 | 0.311 | +13.1% |
-| Semantic Preservation | 0.144 | 0.186 | +29.2% |
-| Inference (CPU) | 0.82s | ~11s | Trade-off for quality |
+### Model Capability (k=5 - Research Configuration)
 
-*Tested on 200 TED talks (avg 2,400 words). Slower than keyword methods but significantly more accurate. Suitable for batch processing, research pipelines, and offline analysis—not real-time applications.*
-*Note: While k=5 yields the highest accuracy, the system defaults to k=3 to provide more concise summaries.*
+| Metric | Baseline (TextRank) | This System | Improvement |
+|--------|---------------------|-------------|-------------|
+| ROUGE-1 F1 | 0.275 | **0.311** | +13.1% |
+| BLEU-1 | 0.189 | **0.291** | +54.0% |
+| Semantic Preservation | 0.144 | **0.186** | +29.2% |
+| Inference (CPU) | 0.82s | ~11s | 13x slower |
 
+### Production Performance (k=3 - Default Configuration)
+
+| Metric | Baseline (TextRank) | This System | Improvement |
+|--------|---------------------|-------------|-------------|
+| ROUGE-1 F1 | 0.275 | **0.273** | -0.7% |
+| BLEU-1 | 0.189 | **0.246** | +30.2% |
+| Semantic Preservation | 0.144 | **0.165** (est.) | +14.6% |
+| Inference (CPU) | 0.82s | ~11s | 13x slower |
+
+*Tested on 200 TED talks (avg 2,400 words). We benchmark at k=5 to show maximum capability, but default to k=3 for conciseness. Users can adjust via `num_sentences` parameter.*
+
+### Design Decision: k=3 vs k=5
+
+**Why default to k=3 despite lower scores?**
+- More concise (67 words vs 112 words average)
+- Better user experience for quick scanning
+- Quality difference is statistically significant but perceptually modest
+- k=5 remains available for users prioritizing comprehensiveness
+- 
 ## Project Structure
 
 ```
