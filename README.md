@@ -139,7 +139,27 @@ graph TD
 - Better user experience for quick scanning
 - Quality difference is statistically significant but perceptually modest
 - k=5 remains available for users prioritizing comprehensiveness
-  
+- 
+
+## Results Visualization
+
+### Hyperparameter Optimization
+![Optimization Curve](results/Optimization_Curve.png)
+*k=5 achieves highest ROUGE-1 (0.311) but we default to k=3 for conciseness*
+
+### Cross-Lingual Performance
+![Cross-lingual Comparison](results/Cross_lingual_comparison.png)
+*English (0.304) vs Spanish (0.242) ROUGE-1 F1 scores*
+
+### Fairness Analysis
+![Fairness Heatmap](results/Fairness_heatmap.png)
+*Model reliability varies by topic - General topics (84.7% ROUGE) outperform specialized domains*
+
+### Explainability Example
+![LIME Explanation](results/Lime_explanation.png)
+*LIME analysis showing function words ('a', 'but', 'the') stabilize summaries via inter-sentence connectivity*
+
+
 ## Project Structure
 
 ```
