@@ -162,7 +162,7 @@ class DomainTunedSummarizer(BERTSummarizer):
     
     def summarize(self, text: str,
                   language: str = 'en',
-                  num_sentences: int = 5,
+                  num_sentences: int = 3,
                   title: Optional[str] = None) -> str:
         """
         Generate domain-tuned summary with structural awareness.
