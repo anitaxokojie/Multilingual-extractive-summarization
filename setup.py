@@ -11,7 +11,7 @@ setup(
         "numpy>=1.24.0",
     ],
     python_requires=">=3.8",
-    author="Your Name",
+    author="Anita Okojie",
     description="BERT-based extractive summarization for TED talks",
-    url="https://github.com/yourusername/multilingual-extractive-summarization",
+    url="https://github.com/anitaxokojie/multilingual-extractive-summarization",
 )
