@@ -1,9 +1,21 @@
 from src.models import BERTSummarizer, DomainTunedSummarizer
+import time
+
+def print_section(title, content):
+    print(f"\n{'='*60}")
+    print(f"  {title}")
+    print(f"{'='*60}")
+    print(f"{content}\n")
 
 def main():
+    print("⏳ Initializing models (this may take a moment)...")
+    start_time = time.time()
+    
     # Initialize the summarizers
     basic_summarizer = BERTSummarizer()
     tuned_summarizer = DomainTunedSummarizer()
+    
+    print(f" Models loaded in {time.time() - start_time:.2f}s\n")
     
     # Example TED Talk excerpt
     english_text = """
@@ -23,26 +35,19 @@ def main():
     """
     
     # Generate summaries
-    print("BASIC SUMMARIZER (ENGLISH):")
-    english_summary = basic_summarizer.summarize(english_text, language='en', num_sentences=3)
-    print(english_summary)
-    print("\n")
+    # English
+    en_basic = basic_summarizer.summarize(english_text, language='en', num_sentences=3)
+    print_section("BASIC SUMMARIZER (ENGLISH)", en_basic)
     
-    print("DOMAIN-TUNED SUMMARIZER (ENGLISH):")
-    english_tuned_summary = tuned_summarizer.summarize(english_text, language='en', num_sentences=3, 
-                                                     title="Climate Crisis TED Talk")
-    print(english_tuned_summary)
-    print("\n")
+    en_tuned = tuned_summarizer.summarize(english_text, language='en', num_sentences=3, title="Climate Crisis TED Talk")
+    print_section("DOMAIN-TUNED SUMMARIZER (ENGLISH)", en_tuned)
     
-    print("BASIC SUMMARIZER (SPANISH):")
-    spanish_summary = basic_summarizer.summarize(spanish_text, language='es', num_sentences=3)
-    print(spanish_summary)
-    print("\n")
+    # Spanish
+    es_basic = basic_summarizer.summarize(spanish_text, language='es', num_sentences=3)
+    print_section("BASIC SUMMARIZER (SPANISH)", es_basic)
     
-    print("DOMAIN-TUNED SUMMARIZER (SPANISH):")
-    spanish_tuned_summary = tuned_summarizer.summarize(spanish_text, language='es', num_sentences=3,
-                                                     title="Charla TED sobre la Crisis Climática")
-    print(spanish_tuned_summary)
+    es_tuned = tuned_summarizer.summarize(spanish_text, language='es', num_sentences=3, title="Charla TED sobre la Crisis Climática")
+    print_section("DOMAIN-TUNED SUMMARIZER (SPANISH)", es_tuned)
 
 if __name__ == "__main__":
     main()
