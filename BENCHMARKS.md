@@ -172,7 +172,8 @@ We tested removing each domain-specific enhancement to measure impact:
 | 4 | 0.308 | 0.282 | 0.150 | 225s | Strong balance |
 | **5** | **0.311** | **0.291** | **0.172** | **224s** | **Optimal** |
 
-**Finding:** k=5 provides the best ROUGE-1 and content coverage scores. While k=3 is more concise, the marginal quality improvement at k=5 (+3.8 ROUGE points, +5.1 coverage points) is worth the extra length for most use cases. Runtime is comparable across all configurations.
+**Finding:** k=5 provides the best ROUGE-1 and content coverage scores. 
+**Decision:** While k=5 is statistically superior, we default to **k=3** in the production API to prioritize conciseness for user experience, as the marginal gain in quality at k=5 comes at the cost of reading time.
 
 ---
 
