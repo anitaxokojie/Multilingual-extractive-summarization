@@ -2,7 +2,7 @@
 
 > A production-ready multilingual extractive summarization system that uses transformer embeddings and graph algorithms to generate concise summaries of TED talks in 50+ languages.
 
-[Technical Deep Dive](notebooks/Semantic_Summarization_Pipeline.ipynb)
+[Technical Deep Dive](notebooks/Semantic_Summarization_Pipeline.ipynb) | [🔗 GitHub](https://github.com/anitaxokojie/multilingual-extractive-summarization)
 
 ## Why This Project Exists
 
