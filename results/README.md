@@ -19,11 +19,3 @@ This folder contains visualizations from the notebook experiments.
 
 All results are generated from `notebooks/Semantic_Summarization_Pipeline.ipynb`.
 
-
-## Results Visualization
-
-![Optimization Curve](results/optimization_curve.png)
-*Hyperparameter optimization showing k=5 achieves highest ROUGE-1*
-
-![Cross-lingual Performance](results/cross_lingual_comparison.png)
-*English vs Spanish performance on identical talks*
