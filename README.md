@@ -181,3 +181,32 @@ MIT - See [LICENSE](LICENSE)
 Built by Anita Okojie
 
 *This project was developed to solve a real problem: making TED's 3,900+ talk library navigable without spending hours watching 18-minute videos.*
+
+
+
+## Technical Architecture
+```mermaid
+graph TD
+    A[Input Text<br/>2,400 words] --> B[spaCy Sentence<br/>Segmentation]
+    B --> C[60 sentences]
+    C --> D[BERT Embeddings<br/>mpnet-base-v2]
+    D --> E[60 × 768 matrix]
+    E --> F[Cosine Similarity<br/>Graph]
+    F --> G[60 × 60 matrix]
+    G --> H[Domain Boosting]
+    H --> I[Intro: 1.2x<br/>Outro: 1.3x<br/>Title: 1.5x]
+    I --> J[PageRank<br/>Algorithm]
+    J --> K[Centrality Scores]
+    K --> L[Top-5 Selection]
+    L --> M[Summary<br/>67 words]
+    
+    style A fill:#e1f5ff
+    style M fill:#c8e6c9
+    style H fill:#fff9c4
+```
+
+**Pipeline Stages:**
+1. **Preprocessing** (60% of time): Sentence segmentation with spaCy
+2. **Embedding** (26% of time): Multilingual BERT encoding
+3. **Ranking** (11% of time): PageRank with domain weights
+4. **Selection** (3% of time): Extract top-k sentences, maintain order
