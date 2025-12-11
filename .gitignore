@@ -172,3 +172,30 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Model downloads (large files)
+*.bin
+*.pt
+*.pth
+*.onnx
+
+# spaCy model data (if downloaded locally instead of via python -m spacy download)
+data/models/
+
+# Large dataset files (if you're storing locally)
+data/*.csv
+data/*.txt
+data/*.json
+!data/README.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Experiment logs
+logs/
+runs/
+experiments/
