@@ -51,7 +51,7 @@ Traditional extractive summarizers count word overlaps. But speakers paraphraseâ
 ### The Fix: Semantic Understanding
 ```python
 # Instead of matching "climate change" == "climate change"
-# We measure semantic distance between sentences using BERT embeddings
+# I measure semantic distance between sentences using BERT embeddings
 similarity = cosine_similarity(embed("climate change"), embed("rising CO2"))
 # Result: 0.87 (highly related)
 ```
@@ -130,7 +130,7 @@ graph TD
 | Semantic Preservation | 0.144 | **0.165** (est.) | +14.6% |
 | Inference (CPU) | 0.82s | ~11s | 13x slower |
 
-*Tested on 200 TED talks (avg 2,400 words). We benchmark at k=5 to show maximum capability, but default to k=3 for conciseness. Users can adjust via `num_sentences` parameter.*
+*Tested on 200 TED talks (avg 2,400 words). I benchmark at k=5 to show maximum capability, but default to k=3 for conciseness. Users can adjust via `num_sentences` parameter.*
 
 ### Design Decision: k=3 vs k=5
 
@@ -145,7 +145,7 @@ graph TD
 
 ### Hyperparameter Optimization
 ![Optimization Curve](results/Optimization_Curve.png)
-*k=5 achieves highest ROUGE-1 (0.311) but we default to k=3 for conciseness*
+*k=5 achieves highest ROUGE-1 (0.311) but I default to k=3 for conciseness*
 
 ### Cross-Lingual Performance
 ![Cross-lingual Comparison](results/Cross_lingual_comparison.png)
