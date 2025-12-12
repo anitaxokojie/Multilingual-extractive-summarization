@@ -134,7 +134,7 @@ Runs entirely on CPU. No GPU required, though GPU acceleration is supported auto
 
 ## Ablation Study: Feature Impact
 
-We tested removing each domain-specific enhancement to measure impact:
+ I tested removing each domain-specific enhancement to measure impact:
 
 | Configuration | ROUGE-1 | Δ vs Full System |
 |---------------|---------|------------------|
@@ -164,7 +164,7 @@ We tested removing each domain-specific enhancement to measure impact:
    - Example: Highly technical talks with domain-specific terminology
    - Mitigation: Works fine, lower ROUGE is due to evaluation baseline limitations
 
-### Edge Cases We Handle
+### Edge Cases I Handle
 
 ✅ **Multi-speaker transcripts:** Works if formatted as continuous text  
 ✅ **Code-switching (EN/ES):** Multilingual embeddings handle naturally  
@@ -207,7 +207,7 @@ We tested removing each domain-specific enhancement to measure impact:
 | **5** | **0.311** | **0.291** | **0.172** | **224s** | **Optimal** |
 
 **Finding:** k=5 provides the best ROUGE-1 and content coverage scores. 
-**Decision:** While k=5 is statistically superior, we default to **k=3** in the production API to prioritize conciseness for user experience, as the marginal gain in quality at k=5 comes at the cost of reading time.
+**Decision:** While k=5 is statistically superior, I default to **k=3** in the production API to prioritize conciseness for user experience, as the marginal gain in quality at k=5 comes at the cost of reading time.
 
 ---
 
