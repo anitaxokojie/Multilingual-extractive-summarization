@@ -27,6 +27,7 @@
 | Domain-Tuned | 0.293 | 0.270 | 0.257 | 0.176 |
 | **Optimized (5 sent)** | **0.311** | **0.280** | **0.291** | **0.186** |
 
+*Preliminary experiments not shown in published notebook
 **Key Insight:** The optimized model achieves the best balance between ROUGE scores (indicating agreement with baseline summaries) and semantic preservation (capturing key content). Higher semantic preservation shows I prioritize *meaning* over exact wording—appropriate for extractive summarization.
 
 ### Cross-Lingual Performance
