@@ -146,8 +146,7 @@ graph TD
 - More concise (67 words vs 112 words average)
 - Better user experience for quick scanning
 - Quality difference is statistically significant but perceptually modest
-- k=5 remains available for users prioritizing comprehensiveness
-- 
+- k=5 remains available for users prioritizing comprehensiveness 
 
 ## Results Visualization
 
@@ -158,6 +157,8 @@ graph TD
 ### Cross-Lingual Performance
 ![Cross-lingual Comparison](results/Cross_lingual_comparison.png)
 *English (0.304) vs Spanish (0.242) ROUGE-1 F1 scores*
+
+*Cross-lingual evaluation on balanced 100 English + 100 Spanish subset. English performance on full 200-doc test set: 0.273 (see Production Performance table).*
 
 **Language Support:**
 The model uses `paraphrase-multilingual-mpnet-base-v2` embeddings, which theoretically support 50+ languages. However, I validated performance on only 2 languages:
