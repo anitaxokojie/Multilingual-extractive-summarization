@@ -1,7 +1,6 @@
 # TED Talk Semantic Summarizer
 
-> A production-ready multilingual extractive summarization system that uses transformer embeddings and graph algorithms to generate concise summaries of TED talks in 50+ languages.
-
+> A production-ready multilingual extractive summarization system using BERT embeddings and PageRank with domain-aware positional weighting (50+ languages).
 [Technical Deep Dive](notebooks/Semantic_Summarization_Pipeline.ipynb) | [🔗 GitHub](https://github.com/anitaxokojie/multilingual-extractive-summarization)
 
 ## Why This Project Exists
@@ -24,6 +23,14 @@ Runs entirely offline—no API costs, no usage limits
 Identified and quantified bias across topics (neuroscience summaries had 3.9% keyword retention vs 84.7% for general topics, revealing areas needing improvement)
 
 This was built to solve a personal problem: I wanted to explore TED's 3,900+ talk library without watching 18-minute videos for each one.
+
+## Architecture Comparison
+I evaluated three approaches:
+- Pure Graph-based (TextRank): F1 0.616
+- Hybrid Graph-BERT: F1 0.657  
+- **Pure BERT + PageRank (selected)**: F1 0.763
+
+The pure BERT approach won because graph preprocessing stripped away specific entities (dates, names, numbers) that were crucial for semantic matching.
 
 ## Quick Test (2 minutes)
 ```bash
