@@ -159,6 +159,27 @@ graph TD
 ![Cross-lingual Comparison](results/Cross_lingual_comparison.png)
 *English (0.304) vs Spanish (0.242) ROUGE-1 F1 scores*
 
+**Language Support:**
+The model uses `paraphrase-multilingual-mpnet-base-v2` embeddings, which theoretically support 50+ languages. However, I validated performance on only 2 languages:
+
+| Language | ROUGE-1 F1 | Performance Gap |
+|----------|------------|-----------------|
+| English  | 0.304      | Baseline        |
+| Spanish  | 0.242      | -20.4%          |
+
+**Why the Spanish Performance Drop?**
+- Semantic embeddings show degradation cross-lingually
+- Domain keyword boosting is English-centric (e.g., "introduction," "conclusion")
+- Spanish TED talks may use different rhetorical structures
+
+**Limitations:**
+Other languages (French, German, Chinese, etc.) remain untested and may perform worse than Spanish.
+
+**Future Work:**
+- Evaluate on multilingual benchmark (MLSum dataset)
+- Implement language-specific positional markers
+- Fine-tune embeddings on parallel TED transcripts
+
 ### Fairness Analysis
 ![Fairness Heatmap](results/Fairness_heatmap.png)
 *Model reliability varies by topic - General topics (84.7% ROUGE) outperform specialized domains*
