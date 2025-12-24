@@ -1,6 +1,6 @@
 # TED Talk Semantic Summarizer
 
-> A production-ready multilingual extractive summarization system using BERT embeddings and PageRank with domain-aware positional weighting (50+ languages).
+> A production-ready multilingual extractive summarization system using BERT embeddings and PageRank with domain-aware positional weighting, designed for multilingual use, validated on English and Spanish.
 
 [Technical Deep Dive](notebooks/Semantic_Summarization_Pipeline.ipynb) | [🔗 GitHub](https://github.com/anitaxokojie/multilingual-extractive-summarization)
 
