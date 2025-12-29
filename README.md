@@ -282,12 +282,17 @@ This bias stems from the domain keyword list being too general. Current version 
 3. **Language parity:** Fine-tune Spanish embeddings to match English performance
 4. **Deployment:** FastAPI service with confidence scoring and user feedback
 
+## Author
+
+**Anita Okojie**  
+💼 [LinkedIn](www.linkedin.com/in/anitaxo) | 🐙 [GitHub](https://github.com/anitaxokojie) | 📧 anitaxokojie@gmail.com
+
+*Questions? Feedback? Open an issue or reach out directly!*
+
+---
 ## License
 
 MIT - See [LICENSE](LICENSE)
 
-## Contact
-
-Built by Anita Okojie
-
 *This project was developed to solve a real problem: making TED's 3,900+ talk library navigable without spending hours watching 18-minute videos.*
+
