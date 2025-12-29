@@ -289,7 +289,6 @@ This bias stems from the domain keyword list being too general. Current version 
 
 *Questions? Feedback? Open an issue or reach out directly!*
 
----
 ## License
 
 MIT - See [LICENSE](LICENSE)
