@@ -54,6 +54,30 @@ python -m spacy download es_core_news_lg
 python test_basic.py  # Should see: ✅ ALL TESTS PASSED
 python demo.py        # See actual summaries
 ```
+
+## Demo
+
+https://github.com/user-attachments/assets/db6db275-adb5-4c2b-b534-5cefd620267a
+
+*Live demonstration: The summarizer processing Al Gore's climate crisis TED talk in both English and Spanish, comparing BASIC (standard extractive) vs DOMAIN-TUNED (with positional/title boosting) approaches.*
+
+### What You're Seeing:
+
+**Input:** ~2,400-word TED talk transcript on climate change
+
+**Processing Pipeline:**
+1. Sentence segmentation (spaCy)
+2. BERT embeddings (mpnet-base-v2)
+3. Cosine similarity graph construction
+4. PageRank with domain-specific weighting
+5. Top-k sentence extraction
+
+**Output:** 3-sentence summaries generated in ~10 seconds on CPU
+
+**Key Insight:** The DOMAIN-TUNED version better captures the speaker's thesis by prioritizing intro/conclusion sentences—where TED speakers typically state their main argument—resulting in more coherent summaries compared to generic PageRank.
+
+---
+
 ## What Makes It Different
 
 ### The Problem with Keyword-Based Approaches
