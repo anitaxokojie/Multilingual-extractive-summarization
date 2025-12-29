@@ -96,7 +96,25 @@ similarity = cosine_similarity(embed("climate change"), embed("rising CO2"))
 - **Cross-lingual capability**: Works on 50+ languages via multilingual embeddings (Spanish performance ~20% lower than English, opportunities for language-specific optimization)
 - **Domain-tuned weighting**: Prioritizes intro/conclusion where TED speakers state their thesis
 
-
+## Repository Structure
+```
+multilingual-extractive-summarization/
+├── src/
+│   ├── models.py              # BERTSummarizer, DomainTunedSummarizer classes
+│   └── __init__.py
+├── notebooks/
+│   └── Semantic_Summarization_Pipeline.ipynb  # Full analysis & benchmarks
+├── results/
+│   ├── Optimization_Curve.png
+│   ├── Cross_lingual_comparison.png
+│   ├── Fairness_heatmap.png
+│   └── Lime_explanation.png
+├── demo.py                    # Quick CLI demo
+├── test_basic.py              # Unit tests
+├── requirements.txt
+├── setup.py
+└── README.md
+```
 ## Usage
 
 ```python
