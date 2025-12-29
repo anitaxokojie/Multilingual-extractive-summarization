@@ -1,6 +1,6 @@
-[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Code Quality](https://img.shields.io/badge/Code%20Quality-Production-brightgreen)]()
+![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)
 # TED Talk Semantic Summarizer
 
 > A production-ready multilingual extractive summarization system using BERT embeddings and PageRank with domain-aware positional weighting, designed for multilingual use, validated on English and Spanish.
