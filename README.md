@@ -104,7 +104,7 @@ similarity = cosine_similarity(embed("climate change"), embed("rising CO2"))
 ```
 
 ### Real-World Impact
-- **200 talks evaluated**: Outperformed TextRank baseline by at least 13% on semantic preservation
+- **200 talks evaluated**: Outperformed TextRank baseline by at least 13% on semantic preservation.Note: The 13% figure represents production settings (k=3), while 29.2% shows research-optimal configuration (k=5).
 - **Cross-lingual capability**: Works on 50+ languages via multilingual embeddings (Spanish performance ~20% lower than English, opportunities for language-specific optimization)
 - **Domain-tuned weighting**: Prioritizes intro/conclusion where TED speakers state their thesis
 
@@ -286,7 +286,9 @@ Initial testing revealed topic bias:
  - **Climate topics**: 2.8% keyword retention, 21.2% ROUGE-1
  - **Neuroscience topics**: 3.9% keyword retention, 21.9% ROUGE-1
 
+Lower keyword retention in specialized domains indicates the model prioritizes semantic understanding over surface-level matching, but this comes at the cost of accuracy in technical fields.
 This bias stems from the domain keyword list being too general. Current version partially addresses this through topic-normalized weighting, but domain-specific fine-tuning would further improve fairness.
+
 
 ## What I Learned
 
