@@ -36,9 +36,11 @@ I evaluated three approaches:
 - Hybrid Graph-BERT: F1 0.657  
 - **Pure BERT + PageRank (selected)**: F1 0.763
 
-**My Implementation:** I designed the domain-tuned boosting system (intro/outro weighting), integrated LIME explanations for interpretability, and conducted the 200-talk benchmark study comparing approaches. The graph construction and PageRank 
-integration is custom code adapting NetworkX for semantic similarity matrices.
+### My Implementation
 
+I designed and implemented the domain-tuned boosting system (intro 1.2x, outro 1.3x, title 1.5x weighting), integrated LIME explanations for 
+interpretability, and conducted the 200-talk benchmark study. The graph construction adapts NetworkX's PageRank for semantic similarity matrices 
+derived from BERT embeddings. All evaluation metrics (ROUGE, BLEU, fairness analysis) and visualizations were developed as part of this project.
 The pure BERT approach won because graph preprocessing stripped away specific entities (dates, names, numbers) that were crucial for semantic matching.
 
 ## Quick Test (2 minutes)
