@@ -42,6 +42,12 @@ interpretability, and conducted the 200-talk benchmark study. The graph construc
 derived from BERT embeddings. All evaluation metrics (ROUGE, BLEU, fairness analysis) and visualizations were developed as part of this project.
 The pure BERT approach won because graph preprocessing stripped away specific entities (dates, names, numbers) that were crucial for semantic matching.
 
+## Dataset
+
+**Source:** [TED Talks Dataset on Kaggle]()
+- 200 talks selected (100 English, 100 Spanish)
+- Average length: 2,400 words
+
 ## Quick Test (2 minutes)
 ```bash
 git clone https://github.com/anitaxokojie/multilingual-extractive-summarization.git
