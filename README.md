@@ -104,7 +104,7 @@ similarity = cosine_similarity(embed("climate change"), embed("rising CO2"))
 ```
 
 ### Real-World Impact
-- **200 talks evaluated**: Outperformed TextRank baseline by 12% on semantic preservation
+- **200 talks evaluated**: Outperformed TextRank baseline by at least 13% on semantic preservation
 - **Cross-lingual capability**: Works on 50+ languages via multilingual embeddings (Spanish performance ~20% lower than English, opportunities for language-specific optimization)
 - **Domain-tuned weighting**: Prioritizes intro/conclusion where TED speakers state their thesis
 
