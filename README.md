@@ -44,7 +44,7 @@ The pure BERT approach won because graph preprocessing stripped away specific en
 
 ## Dataset
 
-**Source:** [TED Talks Dataset on Kaggle]()
+**Source:** [TED Talks Dataset on Kaggle](https://www.kaggle.com/datasets/miguelcorraljr/ted-ultimate-dataset)
 - 200 talks selected (100 English, 100 Spanish)
 - Average length: 2,400 words
 
