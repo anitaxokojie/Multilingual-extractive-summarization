@@ -2,7 +2,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)
 
-**Quick Links:** [🎥 Demo](#demo) | [📓 Technical Notebook](notebooks/Semantic_Summarization_Pipeline.ipynb) | [📊 Benchmarks](BENCHMARKS.md) | [🔧 Installation](INSTALL.md)
+**Quick Links:** [Demo](#demo) | [ Technical Notebook](notebooks/Semantic_Summarization_Pipeline.ipynb) | [ Benchmarks](BENCHMARKS.md) | [Installation](INSTALL.md)
 # TED Talk Semantic Summarizer
 
 > A production-ready multilingual extractive summarization system using BERT embeddings and PageRank with domain-aware positional weighting, designed for multilingual use, validated on English and Spanish.
@@ -322,8 +322,8 @@ This bias stems from the domain keyword list being too general. Current version 
 
 ## Author
 
-**Anita Okojie**  
-💼 [LinkedIn](www.linkedin.com/in/anitaxo) | 🐙 [GitHub](https://github.com/anitaxokojie) | 📧 anitaxokojie@gmail.com
+**Anita Okojie** 
+ [LinkedIn](www.linkedin.com/in/anitaxo) |  [GitHub](https://github.com/anitaxokojie) | 📧 anitaxokojie@gmail.com
 
 *Questions? Feedback? Open an issue or reach out directly!*
 
